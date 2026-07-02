@@ -1,0 +1,20 @@
+# Build and output folders
+build/
+output/
+
+# Compiled files
+*.o
+*.out
+*.exe
+main
+outDebug
+
+# macOS debug symbols
+*.dSYM/
+main.dSYM/
+
+# macOS system files
+.DS_Store
+
+# Temporary files
+*.tmp
