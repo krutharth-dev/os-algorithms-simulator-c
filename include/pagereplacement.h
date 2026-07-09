@@ -137,6 +137,25 @@ int isPageInFrames(int frames[], int frame_count, int page)
     return 0;
 }
 
+int getFrameIndex(int frames[], int frame_count, int page)
+{
+    for (int i = 0; i < frame_count; i++)
+    {
+        if (frames[i] == page)
+            return i;
+    }
+    return -1;
+}
+
+void printPageReplacementSummary(const char *algorithm, int page_faults, int n)
+{
+    printf("\n╔════════════════════════════════════════╗\n");
+    printf("║ Total Page Faults (%-8s): %-7d║\n", algorithm, page_faults);
+    printf("║ Page Hit Ratio: %-20.2f║\n", (float)(n - page_faults) / n);
+    printf("║ Page Fault Ratio: %-18.2f║\n", (float)page_faults / n);
+    printf("╚════════════════════════════════════════╝\n");
+}
+
 // ========================================
 // FIFO PAGE REPLACEMENT
 // ========================================
@@ -173,11 +192,7 @@ void runFIFO(int pages[], int n, int frame_count)
         printf(hit ? " (Hit)\n" : " (Fault)\n");
     }
 
-    printf("\n╔════════════════════════════════════════╗\n");
-    printf("║ Total Page Faults (FIFO): %-12d║\n", page_faults);
-    printf("║ Page Hit Ratio: %-20.2f║\n", (float)(n - page_faults) / n);
-    printf("║ Page Fault Ratio: %-18.2f║\n", (float)page_faults / n);
-    printf("╚════════════════════════════════════════╝\n");
+    printPageReplacementSummary("FIFO", page_faults, n);
 }
 
 // ========================================
@@ -224,12 +239,7 @@ void runLRU(int pages[], int n, int frame_count)
         }
     }
 
-    printf("\n╔════════════════════════════════════════╗\n");
-    printf("║ Total Page Faults (LRU): %-13d║\n", faults);
-    printf("║ Page Hit Ratio: %-20.2f║\n", (float)(n - faults) / n);
-    printf("║ Page Fault Ratio: %-18.2f║\n", (float)faults / n);
-    printf("╚════════════════════════════════════════╝\n");
-
+    printPageReplacementSummary("LRU", faults, n);
     freeList(head);
 }
 
@@ -314,11 +324,105 @@ void runOptimal(int pages[], int n, int frame_count)
         }
     }
 
-    printf("\n╔════════════════════════════════════════╗\n");
-    printf("║ Total Page Faults (Optimal): %-9d║\n", page_faults);
-    printf("║ Page Hit Ratio: %-20.2f║\n", (float)(n - page_faults) / n);
-    printf("║ Page Fault Ratio: %-18.2f║\n", (float)page_faults / n);
-    printf("╚════════════════════════════════════════╝\n");
+    printPageReplacementSummary("Optimal", page_faults, n);
+}
+
+// ========================================
+// LFU PAGE REPLACEMENT
+// ========================================
+
+int findLFUVictim(int frequencies[], int load_order[], int frame_count)
+{
+    int victim_index = 0;
+
+    for (int i = 1; i < frame_count; i++)
+    {
+        if (frequencies[i] < frequencies[victim_index])
+        {
+            victim_index = i;
+        }
+        else if (frequencies[i] == frequencies[victim_index] && load_order[i] < load_order[victim_index])
+        {
+            victim_index = i;
+        }
+    }
+
+    return victim_index;
+}
+
+void runLFU(int pages[], int n, int frame_count)
+{
+    int frames[MAX_FRAMES];
+    int frequencies[MAX_FRAMES];
+    int load_order[MAX_FRAMES];
+    int page_faults = 0;
+    int used = 0;
+    int time_counter = 0;
+
+    for (int i = 0; i < frame_count; i++)
+    {
+        frames[i] = -1;
+        frequencies[i] = 0;
+        load_order[i] = 0;
+    }
+
+    printf("\n========== LFU PAGE REPLACEMENT ==========\n");
+    printf("Strategy: Replace the least frequently used page; FIFO is used as tie-breaker\n");
+    printf("Page | Frames | Frequencies | Decision\n");
+    printf("------------------------------------------------------------\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        int page = pages[i];
+        int index = getFrameIndex(frames, frame_count, page);
+        time_counter++;
+
+        printf("%4d | ", page);
+
+        if (index != -1)
+        {
+            frequencies[index]++;
+            printFrames(frames, frame_count);
+            printf("| ");
+            for (int j = 0; j < frame_count; j++)
+                (frames[j] == -1) ? printf("- ") : printf("%d ", frequencies[j]);
+            printf("| Hit\n");
+            continue;
+        }
+
+        page_faults++;
+
+        if (used < frame_count)
+        {
+            frames[used] = page;
+            frequencies[used] = 1;
+            load_order[used] = time_counter;
+            used++;
+
+            printFrames(frames, frame_count);
+            printf("| ");
+            for (int j = 0; j < frame_count; j++)
+                (frames[j] == -1) ? printf("- ") : printf("%d ", frequencies[j]);
+            printf("| Fault - Empty frame used\n");
+        }
+        else
+        {
+            int victim_index = findLFUVictim(frequencies, load_order, frame_count);
+            int replaced_page = frames[victim_index];
+
+            frames[victim_index] = page;
+            frequencies[victim_index] = 1;
+            load_order[victim_index] = time_counter;
+
+            printFrames(frames, frame_count);
+            printf("| ");
+            for (int j = 0; j < frame_count; j++)
+                printf("%d ", frequencies[j]);
+            printf("| Fault - Replaced %d\n", replaced_page);
+        }
+    }
+
+    printPageReplacementSummary("LFU", page_faults, n);
 }
 
 #endif // PAGE_REPLACEMENT_H
