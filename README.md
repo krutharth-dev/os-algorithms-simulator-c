@@ -1,8 +1,8 @@
 # Operating System Algorithms Simulator in C
 
-A menu-driven C application that simulates important Operating System algorithms through an interactive command-line interface. The project is designed to demonstrate core OS concepts such as page replacement, memory allocation, disk scheduling, and inter-process communication.
+A menu-driven C application that simulates important Operating System algorithms through an interactive command-line interface. The project demonstrates core OS concepts such as page replacement, memory allocation, disk scheduling, and inter-process communication.
 
-This repository is suitable as a systems programming / operating systems portfolio project because it combines algorithm implementation, modular C structure, user input handling, and Unix/Linux process concepts.
+This repository is suitable as a systems programming / operating systems portfolio project because it combines algorithm implementation, modular C structure, user input handling, algorithm comparison, and Unix/Linux process concepts.
 
 ---
 
@@ -16,6 +16,7 @@ The program currently includes:
 - Memory allocation algorithms
 - Disk scheduling algorithms
 - Inter-process communication demonstrations
+- Algorithm complexity documentation
 
 ---
 
@@ -26,6 +27,7 @@ The program currently includes:
 - FIFO: First In, First Out
 - LRU: Least Recently Used
 - Optimal Page Replacement
+- LFU: Least Frequently Used
 - Run all page replacement algorithms for comparison
 - User-defined page reference string
 - User-defined number of frames
@@ -40,6 +42,8 @@ The program currently includes:
 - Run all memory allocation algorithms for comparison
 - User-defined memory block sizes
 - User-defined process sizes
+- Allocation summary
+- Internal and external fragmentation-style reporting
 
 ### Disk Scheduling Algorithms
 
@@ -90,6 +94,7 @@ The program currently includes:
 ├── Makefile
 ├── README.md
 ├── UPGRADE_PLAN.md
+├── ALGORITHM_COMPLEXITY.md
 └── .gitignore
 ```
 
@@ -140,13 +145,13 @@ OPERATING SYSTEM ALGORITHMS SIMULATOR
 ```text
 Frames: 3
 Page reference string: 7 0 1 2 0 3 0 4 2 3
-Algorithms: FIFO, LRU, Optimal
+Algorithms: FIFO, LRU, Optimal, LFU
 ```
 
 Expected learning outcome:
 
 - Understand how page faults occur
-- Compare FIFO, LRU, and Optimal behaviour
+- Compare FIFO, LRU, Optimal, and LFU behaviour
 - Observe how limited frames affect memory performance
 - Compare page hit ratio and page fault ratio
 
@@ -161,7 +166,7 @@ Algorithms: First Fit, Best Fit, Worst Fit
 Expected learning outcome:
 
 - Compare how different allocation strategies place processes
-- Observe internal/external fragmentation behaviour conceptually
+- Observe fragmentation behaviour conceptually
 - Understand why allocation strategy affects memory utilisation
 
 ### Disk Scheduling Example
@@ -185,14 +190,27 @@ Expected learning outcome:
 
 | Concept | Where It Is Demonstrated |
 |---|---|
-| Page faults | FIFO, LRU, and Optimal modules |
+| Page faults | FIFO, LRU, Optimal, and LFU modules |
 | Page hit/fault ratio | Page replacement summary output |
 | Memory allocation | First Fit, Best Fit, Worst Fit |
 | Disk head movement | FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK |
 | Process communication | Pipes and shared memory |
 | Synchronisation | Producer-consumer with semaphores |
+| Algorithm complexity | `ALGORITHM_COMPLEXITY.md` |
 | Modular C design | Header-based algorithm separation |
 | CLI interaction | Menu-driven program flow |
+
+---
+
+## Complexity Reference
+
+A separate complexity reference has been added:
+
+```text
+ALGORITHM_COMPLEXITY.md
+```
+
+It summarises time and space complexity for page replacement, memory allocation, disk scheduling, and IPC demonstrations.
 
 ---
 
@@ -222,15 +240,14 @@ It is useful for:
 ## Future Enhancements
 
 - Add graphical visualisation for page replacement and disk scheduling.
-- Add more page replacement algorithms such as LFU.
-- Add fragmentation calculation for memory allocation.
+- Add a final comparison table after each Run All option.
 - Add automated test cases for each module.
 - Add CSV export for algorithm results.
 - Add a web-based dashboard version.
-- Add detailed time and space complexity notes for every algorithm.
+- Split header implementations into separate `.c` source files.
 
 ---
 
 ## Resume Summary
 
-Built a modular Operating System Algorithms Simulator in C implementing page replacement, memory allocation, disk scheduling, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
+Built a modular Operating System Algorithms Simulator in C implementing FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
