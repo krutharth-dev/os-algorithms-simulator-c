@@ -7,10 +7,12 @@ This file lists practical improvements that can make the Operating System Algori
 ## Completed Recent Upgrades
 
 - Added Optimal Page Replacement.
+- Added LFU Page Replacement.
 - Added page hit ratio and page fault ratio for page replacement modules.
 - Added LOOK disk scheduling.
 - Added C-LOOK disk scheduling.
 - Added Run All options for page replacement and disk scheduling comparison.
+- Added `ALGORITHM_COMPLEXITY.md` with time and space complexity notes.
 - Updated the README to reflect the expanded algorithm set.
 
 ---
@@ -19,9 +21,9 @@ This file lists practical improvements that can make the Operating System Algori
 
 - Add terminal screenshots for each module.
 - Add a short demo GIF or screen recording.
-- Add sample input/output for FIFO, LRU, Optimal, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, and C-LOOK.
+- Add sample input/output for FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, and C-LOOK.
 - Add an algorithm comparison table in the README.
-- Add time and space complexity notes for every algorithm.
+- Add screenshots of the Run All comparison flow.
 
 ---
 
@@ -60,14 +62,13 @@ Suggested improved structure:
 
 ### Page Replacement
 
-- Add LFU: Least Frequently Used.
-- Add side-by-side comparison between algorithms.
-- Add a summary table after Run All mode.
+- Add side-by-side comparison table after Run All mode.
+- Add CSV export for page replacement results.
 
 ### Memory Allocation
 
-- Add fragmentation calculation.
-- Add remaining block size display.
+- Add clearer fragmentation calculation.
+- Add remaining block size display after each allocation step.
 - Add comparison table for memory utilisation.
 
 ### Disk Scheduling
@@ -109,6 +110,6 @@ The best immediate upgrade is:
 
 1. Add screenshots/sample outputs.
 2. Improve non-numeric input validation.
-3. Add LFU page replacement.
-4. Add fragmentation calculation for memory allocation.
+3. Add summary tables after Run All mode.
+4. Add CSV export for algorithm results.
 5. Split code into separate `.c` implementation files.
