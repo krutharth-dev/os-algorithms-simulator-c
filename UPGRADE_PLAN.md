@@ -4,11 +4,22 @@ This file lists practical improvements that can make the Operating System Algori
 
 ---
 
+## Completed Recent Upgrades
+
+- Added Optimal Page Replacement.
+- Added page hit ratio and page fault ratio for page replacement modules.
+- Added LOOK disk scheduling.
+- Added C-LOOK disk scheduling.
+- Added Run All options for page replacement and disk scheduling comparison.
+- Updated the README to reflect the expanded algorithm set.
+
+---
+
 ## Priority 1: Documentation and Demo Improvements
 
 - Add terminal screenshots for each module.
 - Add a short demo GIF or screen recording.
-- Add sample input/output for FIFO, LRU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, and C-SCAN.
+- Add sample input/output for FIFO, LRU, Optimal, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, and C-LOOK.
 - Add an algorithm comparison table in the README.
 - Add time and space complexity notes for every algorithm.
 
@@ -49,10 +60,9 @@ Suggested improved structure:
 
 ### Page Replacement
 
-- Add Optimal Page Replacement.
 - Add LFU: Least Frequently Used.
-- Add page hit/page fault ratio.
 - Add side-by-side comparison between algorithms.
+- Add a summary table after Run All mode.
 
 ### Memory Allocation
 
@@ -62,10 +72,9 @@ Suggested improved structure:
 
 ### Disk Scheduling
 
-- Add LOOK algorithm.
-- Add C-LOOK algorithm.
-- Add total seek time comparison.
-- Add average seek time calculation.
+- Add a summary table after Run All mode.
+- Add optional visual track movement display.
+- Add CSV export for seek sequence and seek time results.
 
 ### IPC
 
@@ -99,7 +108,7 @@ Suggested improved structure:
 The best immediate upgrade is:
 
 1. Add screenshots/sample outputs.
-2. Add Optimal page replacement.
-3. Add LOOK and C-LOOK disk scheduling.
-4. Improve input validation.
+2. Improve non-numeric input validation.
+3. Add LFU page replacement.
+4. Add fragmentation calculation for memory allocation.
 5. Split code into separate `.c` implementation files.
