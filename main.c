@@ -32,8 +32,9 @@ void displayPageReplacementMenu()
     printf("║  1. FIFO (First In First Out)                ║\n");
     printf("║  2. LRU (Least Recently Used)                ║\n");
     printf("║  3. Optimal Page Replacement                 ║\n");
-    printf("║  4. Run All                                  ║\n");
-    printf("║  5. Back to Main Menu                        ║\n");
+    printf("║  4. LFU (Least Frequently Used)              ║\n");
+    printf("║  5. Run All                                  ║\n");
+    printf("║  6. Back to Main Menu                        ║\n");
     printf("╚══════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
 }
@@ -140,14 +141,18 @@ void handlePageReplacement()
             runOptimal(pages, n, frame_count);
             break;
         case 4:
+            runLFU(pages, n, frame_count);
+            break;
+        case 5:
             printf("\n════════════════════════════════════════════════\n");
             printf("       RUNNING ALL PAGE REPLACEMENT ALGORITHMS  \n");
             printf("════════════════════════════════════════════════\n");
             runFIFO(pages, n, frame_count);
             runLRU(pages, n, frame_count);
             runOptimal(pages, n, frame_count);
+            runLFU(pages, n, frame_count);
             break;
-        case 5:
+        case 6:
             printf("\n✓ Returning to main menu...\n");
             return;
         default:
@@ -385,7 +390,7 @@ int main()
     printf("█        OPERATING SYSTEM ALGORITHMS SIMULATOR         █\n");
     printf("█        =====================================         █\n");
     printf("█                                                      █\n");
-    printf("█    📄 Page Replacement (FIFO, LRU, Optimal)          █\n");
+    printf("█    📄 Page Replacement (FIFO, LRU, Optimal, LFU)     █\n");
     printf("█    💾 Memory Allocation (FF, BF, WF)                 █\n");
     printf("█    💿 Disk Scheduling (FCFS, SSTF, SCAN, C-SCAN)     █\n");
     printf("█       + LOOK and C-LOOK                              █\n");
