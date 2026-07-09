@@ -31,7 +31,9 @@ void displayPageReplacementMenu()
     printf("╠══════════════════════════════════════════════╣\n");
     printf("║  1. FIFO (First In First Out)                ║\n");
     printf("║  2. LRU (Least Recently Used)                ║\n");
-    printf("║  3. Back to Main Menu                        ║\n");
+    printf("║  3. Optimal Page Replacement                 ║\n");
+    printf("║  4. Run All                                  ║\n");
+    printf("║  5. Back to Main Menu                        ║\n");
     printf("╚══════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
 }
@@ -61,7 +63,10 @@ void displayDiskSchedulingMenu()
     printf("║  2. SSTF (Shortest Seek Time First)          ║\n");
     printf("║  3. SCAN (Elevator Algorithm)                ║\n");
     printf("║  4. C-SCAN (Circular SCAN)                   ║\n");
-    printf("║  5. Back to Main Menu                        ║\n");
+    printf("║  5. LOOK                                     ║\n");
+    printf("║  6. C-LOOK                                   ║\n");
+    printf("║  7. Run All                                  ║\n");
+    printf("║  8. Back to Main Menu                        ║\n");
     printf("╚══════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
 }
@@ -132,6 +137,17 @@ void handlePageReplacement()
             runLRU(pages, n, frame_count);
             break;
         case 3:
+            runOptimal(pages, n, frame_count);
+            break;
+        case 4:
+            printf("\n════════════════════════════════════════════════\n");
+            printf("       RUNNING ALL PAGE REPLACEMENT ALGORITHMS  \n");
+            printf("════════════════════════════════════════════════\n");
+            runFIFO(pages, n, frame_count);
+            runLRU(pages, n, frame_count);
+            runOptimal(pages, n, frame_count);
+            break;
+        case 5:
             printf("\n✓ Returning to main menu...\n");
             return;
         default:
@@ -142,7 +158,7 @@ void handlePageReplacement()
 
 void handleMemoryAllocation()
 {
-    int blockSizes[MAX_BLOCKS], processSizes[MAX_PROCESSES];    
+    int blockSizes[MAX_BLOCKS], processSizes[MAX_PROCESSES];
     int blockCount, processCount, choice;
 
     printf("\n");
@@ -216,6 +232,18 @@ void handleMemoryAllocation()
     }
 }
 
+void askDiskDirection(int *direction)
+{
+    printf("\nEnter direction (1 = Right, 0 = Left): ");
+    scanf("%d", direction);
+
+    if (*direction != 0 && *direction != 1)
+    {
+        printf("Invalid direction selected. Defaulting to Right.\n");
+        *direction = 1;
+    }
+}
+
 void handleDiskScheduling()
 {
     int requests[MAX_REQUESTS], n, head, direction, choice;
@@ -269,16 +297,34 @@ void handleDiskScheduling()
             SSTF(requests, n, head);
             break;
         case 3:
-            printf("\nEnter direction (1 = Right, 0 = Left): ");
-            scanf("%d", &direction);
+            askDiskDirection(&direction);
             SCAN(requests, n, head, direction);
             break;
         case 4:
-            printf("\nEnter direction (1 = Right, 0 = Left): ");
-            scanf("%d", &direction);
+            askDiskDirection(&direction);
             CSCAN(requests, n, head, direction);
             break;
         case 5:
+            askDiskDirection(&direction);
+            LOOK(requests, n, head, direction);
+            break;
+        case 6:
+            askDiskDirection(&direction);
+            CLOOK(requests, n, head, direction);
+            break;
+        case 7:
+            askDiskDirection(&direction);
+            printf("\n════════════════════════════════════════════════\n");
+            printf("       RUNNING ALL DISK SCHEDULING ALGORITHMS   \n");
+            printf("════════════════════════════════════════════════\n");
+            FCFS(requests, n, head);
+            SSTF(requests, n, head);
+            SCAN(requests, n, head, direction);
+            CSCAN(requests, n, head, direction);
+            LOOK(requests, n, head, direction);
+            CLOOK(requests, n, head, direction);
+            break;
+        case 8:
             printf("\n✓ Returning to main menu...\n");
             return;
         default:
@@ -339,9 +385,10 @@ int main()
     printf("█        OPERATING SYSTEM ALGORITHMS SIMULATOR         █\n");
     printf("█        =====================================         █\n");
     printf("█                                                      █\n");
-    printf("█    📄 Page Replacement (FIFO, LRU)                   █\n");
+    printf("█    📄 Page Replacement (FIFO, LRU, Optimal)          █\n");
     printf("█    💾 Memory Allocation (FF, BF, WF)                 █\n");
     printf("█    💿 Disk Scheduling (FCFS, SSTF, SCAN, C-SCAN)     █\n");
+    printf("█       + LOOK and C-LOOK                              █\n");
     printf("█    🔄 IPC (Pipe, Semaphores, Shared Memory)          █\n");
     printf("█                                                      █\n");
     printf("████████████████████████████████████████████████████████\n");
