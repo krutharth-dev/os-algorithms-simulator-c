@@ -25,9 +25,12 @@ The program currently includes:
 
 - FIFO: First In, First Out
 - LRU: Least Recently Used
+- Optimal Page Replacement
+- Run all page replacement algorithms for comparison
 - User-defined page reference string
 - User-defined number of frames
-- Page fault demonstration
+- Page fault count
+- Page hit ratio and page fault ratio
 
 ### Memory Allocation Algorithms
 
@@ -44,9 +47,13 @@ The program currently includes:
 - SSTF: Shortest Seek Time First
 - SCAN: Elevator Algorithm
 - C-SCAN: Circular SCAN
+- LOOK
+- C-LOOK
+- Run all disk scheduling algorithms for comparison
 - User-defined request queue
 - User-defined initial head position
-- Direction selection for SCAN and C-SCAN
+- Direction selection for SCAN, C-SCAN, LOOK, and C-LOOK
+- Total and average seek time calculation
 
 ### Inter-Process Communication
 
@@ -82,6 +89,7 @@ The program currently includes:
 ├── main.c
 ├── Makefile
 ├── README.md
+├── UPGRADE_PLAN.md
 └── .gitignore
 ```
 
@@ -132,14 +140,15 @@ OPERATING SYSTEM ALGORITHMS SIMULATOR
 ```text
 Frames: 3
 Page reference string: 7 0 1 2 0 3 0 4 2 3
-Algorithm: FIFO or LRU
+Algorithms: FIFO, LRU, Optimal
 ```
 
 Expected learning outcome:
 
 - Understand how page faults occur
-- Compare FIFO and LRU behaviour
+- Compare FIFO, LRU, and Optimal behaviour
 - Observe how limited frames affect memory performance
+- Compare page hit ratio and page fault ratio
 
 ### Memory Allocation Example
 
@@ -160,14 +169,15 @@ Expected learning outcome:
 ```text
 Requests: 98 183 37 122 14 124 65 67
 Initial head: 53
-Algorithms: FCFS, SSTF, SCAN, C-SCAN
+Algorithms: FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK
 ```
 
 Expected learning outcome:
 
 - Compare total head movement
 - Understand why scheduling strategy affects disk access efficiency
-- Observe the difference between linear and circular scanning
+- Observe the difference between SCAN/C-SCAN and LOOK/C-LOOK
+- Compare total and average seek times
 
 ---
 
@@ -175,9 +185,10 @@ Expected learning outcome:
 
 | Concept | Where It Is Demonstrated |
 |---|---|
-| Page faults | FIFO and LRU modules |
+| Page faults | FIFO, LRU, and Optimal modules |
+| Page hit/fault ratio | Page replacement summary output |
 | Memory allocation | First Fit, Best Fit, Worst Fit |
-| Disk head movement | FCFS, SSTF, SCAN, C-SCAN |
+| Disk head movement | FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK |
 | Process communication | Pipes and shared memory |
 | Synchronisation | Producer-consumer with semaphores |
 | Modular C design | Header-based algorithm separation |
@@ -211,8 +222,8 @@ It is useful for:
 ## Future Enhancements
 
 - Add graphical visualisation for page replacement and disk scheduling.
-- Add more page replacement algorithms such as Optimal and LFU.
-- Add more disk scheduling algorithms such as LOOK and C-LOOK.
+- Add more page replacement algorithms such as LFU.
+- Add fragmentation calculation for memory allocation.
 - Add automated test cases for each module.
 - Add CSV export for algorithm results.
 - Add a web-based dashboard version.
