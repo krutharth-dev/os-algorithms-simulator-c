@@ -6,6 +6,12 @@ This repository is suitable as a systems programming / operating systems portfol
 
 ---
 
+## Sample Output
+
+![Operating System Algorithms Simulator sample output](screenshots/sample-output.svg)
+
+---
+
 ## Project Overview
 
 Operating systems use different algorithms to manage memory, storage access, and process communication. This project provides a practical simulator for those concepts so users can enter inputs, run algorithms, and compare the results directly from the terminal.
@@ -94,6 +100,8 @@ The program currently includes:
 │   ├── ipc.h
 │   ├── memoryallocation.h
 │   └── pagereplacement.h
+├── screenshots/
+│   └── sample-output.svg
 ├── main.c
 ├── Makefile
 ├── README.md
