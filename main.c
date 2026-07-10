@@ -2,6 +2,7 @@
 #include "include/pagereplacement.h"
 #include "include/memoryallocation.h"
 #include "include/diskscheduling.h"
+#include "include/algorithm_reports.h"
 #include "include/ipc.h"
 
 // ========================================
@@ -33,7 +34,7 @@ void displayPageReplacementMenu()
     printf("║  2. LRU (Least Recently Used)                ║\n");
     printf("║  3. Optimal Page Replacement                 ║\n");
     printf("║  4. LFU (Least Frequently Used)              ║\n");
-    printf("║  5. Run All                                  ║\n");
+    printf("║  5. Run All + Comparison Table               ║\n");
     printf("║  6. Back to Main Menu                        ║\n");
     printf("╚══════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
@@ -66,7 +67,7 @@ void displayDiskSchedulingMenu()
     printf("║  4. C-SCAN (Circular SCAN)                   ║\n");
     printf("║  5. LOOK                                     ║\n");
     printf("║  6. C-LOOK                                   ║\n");
-    printf("║  7. Run All                                  ║\n");
+    printf("║  7. Run All + Comparison Table               ║\n");
     printf("║  8. Back to Main Menu                        ║\n");
     printf("╚══════════════════════════════════════════════╝\n");
     printf("Enter your choice: ");
@@ -151,6 +152,7 @@ void handlePageReplacement()
             runLRU(pages, n, frame_count);
             runOptimal(pages, n, frame_count);
             runLFU(pages, n, frame_count);
+            print_page_replacement_comparison(pages, n, frame_count);
             break;
         case 6:
             printf("\n✓ Returning to main menu...\n");
@@ -328,6 +330,7 @@ void handleDiskScheduling()
             CSCAN(requests, n, head, direction);
             LOOK(requests, n, head, direction);
             CLOOK(requests, n, head, direction);
+            print_disk_scheduling_comparison(requests, n, head, direction);
             break;
         case 8:
             printf("\n✓ Returning to main menu...\n");
