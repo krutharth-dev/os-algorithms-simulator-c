@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="20" fill="#0d1117"/>
+  <rect x="0" y="0" width="1200" height="54" rx="20" fill="#161b22"/>
+  <circle cx="32" cy="27" r="9" fill="#ff5f56"/>
+  <circle cx="58" cy="27" r="9" fill="#ffbd2e"/>
+  <circle cx="84" cy="27" r="9" fill="#27c93f"/>
+  <text x="600" y="35" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9" text-anchor="middle">os-algorithms-simulator-c</text>
+
+  <text x="36" y="90" font-family="Menlo, Consolas, monospace" font-size="19" fill="#7ee787">user@MacBook-Air</text>
+  <text x="205" y="90" font-family="Menlo, Consolas, monospace" font-size="19" fill="#58a6ff">~/os-algorithms-simulator-c</text>
+  <text x="510" y="90" font-family="Menlo, Consolas, monospace" font-size="19" fill="#c9d1d9">$ ./os_simulator</text>
+
+  <text x="36" y="130" font-family="Menlo, Consolas, monospace" font-size="18" fill="#8b949e">============================================================</text>
+  <text x="210" y="165" font-family="Menlo, Consolas, monospace" font-size="22" fill="#7ee787" font-weight="700">OPERATING SYSTEM ALGORITHMS SIMULATOR</text>
+  <text x="36" y="200" font-family="Menlo, Consolas, monospace" font-size="18" fill="#8b949e">============================================================</text>
+
+  <text x="36" y="245" font-family="Menlo, Consolas, monospace" font-size="20" fill="#7ee787" font-weight="700">MAIN MENU</text>
+  <text x="36" y="280" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">1. Page Replacement Algorithms</text>
+  <text x="36" y="310" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">2. Memory Allocation Algorithms</text>
+  <text x="36" y="340" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">3. Disk Scheduling Algorithms</text>
+  <text x="36" y="370" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">4. IPC Demonstrations</text>
+  <text x="36" y="400" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">5. Exit</text>
+
+  <text x="36" y="450" font-family="Menlo, Consolas, monospace" font-size="20" fill="#7ee787" font-weight="700">PAGE REPLACEMENT RUN ALL SUMMARY</text>
+  <text x="36" y="485" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">Algorithm        Page Faults        Hit Ratio        Fault Ratio</text>
+  <text x="36" y="512" font-family="Menlo, Consolas, monospace" font-size="18" fill="#8b949e">-------------------------------------------------------------------</text>
+  <text x="36" y="540" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">FIFO             8                  0.20             0.80</text>
+  <text x="36" y="568" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">LRU              7                  0.30             0.70</text>
+  <text x="36" y="596" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">Optimal          6                  0.40             0.60</text>
+  <text x="36" y="624" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">LFU              7                  0.30             0.70</text>
+
+  <text x="36" y="675" font-family="Menlo, Consolas, monospace" font-size="20" fill="#7ee787" font-weight="700">DISK SCHEDULING COMPARISON</text>
+  <text x="36" y="710" font-family="Menlo, Consolas, monospace" font-size="18" fill="#c9d1d9">FCFS: 640   SSTF: 236   SCAN: 331   C-SCAN: 382   LOOK: 299   C-LOOK: 322</text>
+</svg>
