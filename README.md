@@ -17,6 +17,7 @@ The program currently includes:
 - Disk scheduling algorithms
 - Inter-process communication demonstrations
 - Algorithm complexity documentation
+- Final comparison tables after Run All modes
 
 ---
 
@@ -33,6 +34,7 @@ The program currently includes:
 - User-defined number of frames
 - Page fault count
 - Page hit ratio and page fault ratio
+- Final comparison table for FIFO, LRU, Optimal, and LFU
 
 ### Memory Allocation Algorithms
 
@@ -58,6 +60,7 @@ The program currently includes:
 - User-defined initial head position
 - Direction selection for SCAN, C-SCAN, LOOK, and C-LOOK
 - Total and average seek time calculation
+- Final comparison table for all disk scheduling algorithms
 
 ### Inter-Process Communication
 
@@ -86,6 +89,7 @@ The program currently includes:
 ```text
 .
 ├── include/
+│   ├── algorithm_reports.h
 │   ├── diskscheduling.h
 │   ├── ipc.h
 │   ├── memoryallocation.h
@@ -154,6 +158,7 @@ Expected learning outcome:
 - Compare FIFO, LRU, Optimal, and LFU behaviour
 - Observe how limited frames affect memory performance
 - Compare page hit ratio and page fault ratio
+- Use the Run All comparison table to compare algorithms directly
 
 ### Memory Allocation Example
 
@@ -182,7 +187,33 @@ Expected learning outcome:
 - Compare total head movement
 - Understand why scheduling strategy affects disk access efficiency
 - Observe the difference between SCAN/C-SCAN and LOOK/C-LOOK
-- Compare total and average seek times
+- Compare total and average seek times using the final comparison table
+
+---
+
+## Example Comparison Tables
+
+### Page Replacement Run All Summary
+
+```text
+Algorithm   Page Faults   Hit Ratio   Fault Ratio
+FIFO        8             0.20        0.80
+LRU         7             0.30        0.70
+Optimal     6             0.40        0.60
+LFU         7             0.30        0.70
+```
+
+### Disk Scheduling Run All Summary
+
+```text
+Algorithm   Total Seek Time   Average Seek Time
+FCFS        640               80.00
+SSTF        236               29.50
+SCAN        331               41.38
+C-SCAN      382               47.75
+LOOK        299               37.38
+C-LOOK      322               40.25
+```
 
 ---
 
@@ -194,6 +225,7 @@ Expected learning outcome:
 | Page hit/fault ratio | Page replacement summary output |
 | Memory allocation | First Fit, Best Fit, Worst Fit |
 | Disk head movement | FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK |
+| Algorithm comparison | `algorithm_reports.h` comparison tables |
 | Process communication | Pipes and shared memory |
 | Synchronisation | Producer-consumer with semaphores |
 | Algorithm complexity | `ALGORITHM_COMPLEXITY.md` |
@@ -228,19 +260,9 @@ It is useful for:
 
 ---
 
-## Limitations
-
-- The project is terminal-based and does not include a graphical interface.
-- It is designed for educational simulation, not actual OS-level scheduling.
-- Input validation can be expanded further for non-numeric input cases.
-- Performance metrics and comparison charts are not yet visualised graphically.
-
----
-
 ## Future Enhancements
 
 - Add graphical visualisation for page replacement and disk scheduling.
-- Add a final comparison table after each Run All option.
 - Add automated test cases for each module.
 - Add CSV export for algorithm results.
 - Add a web-based dashboard version.
@@ -250,4 +272,4 @@ It is useful for:
 
 ## Resume Summary
 
-Built a modular Operating System Algorithms Simulator in C implementing FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
+Built a modular Operating System Algorithms Simulator in C implementing FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK, algorithm comparison tables, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
