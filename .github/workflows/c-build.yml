@@ -1,0 +1,19 @@
+name: C Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        run: make
+
+      - name: Verify binary exists
+        run: test -f os_simulator
