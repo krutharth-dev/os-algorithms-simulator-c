@@ -1,5 +1,10 @@
 # Operating System Algorithms Simulator in C
 
+![C Build](https://github.com/krutharth-dev/os-algorithms-simulator-c/actions/workflows/c-build.yml/badge.svg)
+![Language: C](https://img.shields.io/badge/Language-C-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform: CLI](https://img.shields.io/badge/Platform-CLI-lightgrey.svg)
+
 A menu-driven C application that simulates important Operating System algorithms through an interactive command-line interface. The project demonstrates core OS concepts such as page replacement, memory allocation, disk scheduling, and inter-process communication.
 
 This repository is suitable as a systems programming / operating systems portfolio project because it combines algorithm implementation, modular C structure, user input handling, algorithm comparison, and Unix/Linux process concepts.
@@ -24,6 +29,8 @@ The program currently includes:
 - Inter-process communication demonstrations
 - Algorithm complexity documentation
 - Final comparison tables after Run All modes
+- GitHub Actions build check
+- MIT License
 
 ---
 
@@ -87,6 +94,7 @@ The program currently includes:
 - Pipes
 - Unix/Linux system calls
 - Command-line interface design
+- GitHub Actions CI
 
 ---
 
@@ -94,6 +102,9 @@ The program currently includes:
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── c-build.yml
 ├── include/
 │   ├── algorithm_reports.h
 │   ├── diskscheduling.h
@@ -105,6 +116,7 @@ The program currently includes:
 ├── main.c
 ├── Makefile
 ├── README.md
+├── LICENSE
 ├── UPGRADE_PLAN.md
 ├── ALGORITHM_COMPLEXITY.md
 └── .gitignore
@@ -237,6 +249,7 @@ C-LOOK      322               40.25
 | Process communication | Pipes and shared memory |
 | Synchronisation | Producer-consumer with semaphores |
 | Algorithm complexity | `ALGORITHM_COMPLEXITY.md` |
+| CI/build verification | GitHub Actions workflow |
 | Modular C design | Header-based algorithm separation |
 | CLI interaction | Menu-driven program flow |
 
@@ -251,6 +264,22 @@ ALGORITHM_COMPLEXITY.md
 ```
 
 It summarises time and space complexity for page replacement, memory allocation, disk scheduling, and IPC demonstrations.
+
+---
+
+## Continuous Integration
+
+This repository includes a GitHub Actions workflow that automatically compiles the project on every push and pull request.
+
+```text
+.github/workflows/c-build.yml
+```
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
@@ -280,4 +309,4 @@ It is useful for:
 
 ## Resume Summary
 
-Built a modular Operating System Algorithms Simulator in C implementing FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK, algorithm comparison tables, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
+Built a modular Operating System Algorithms Simulator in C implementing FIFO, LRU, Optimal, LFU, First Fit, Best Fit, Worst Fit, FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK, algorithm comparison tables, GitHub Actions build checks, and IPC concepts using GCC, POSIX threads, semaphores, shared memory, pipes, and a menu-driven terminal interface.
