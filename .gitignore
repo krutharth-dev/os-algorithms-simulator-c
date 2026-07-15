@@ -1,20 +1,30 @@
 # Build and output folders
 build/
 output/
+dist/
 
-# Compiled files
+# Compiled binaries and object files
 *.o
 *.out
 *.exe
+*.bin
+os_simulator
 main
 outDebug
 
-# macOS debug symbols
+# Debug symbols
 *.dSYM/
 main.dSYM/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # macOS system files
 .DS_Store
 
 # Temporary files
 *.tmp
+*.log
